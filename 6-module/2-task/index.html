@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Бангкок Экспресс: Карточка товара</title>
   <link rel="stylesheet" href="./index.css" />
-  <link rel="stylesheet" href="/assets/styles/common.css" />
+  <link rel="stylesheet" href="../../assets/styles/common.css" />
 </head>
 
 <body>
@@ -22,8 +22,18 @@
       image: "laab_kai_chicken_salad.png",
       id: "laab-kai-chicken-salad"
     });
+    let hh = new ProductCard({
+      name: "Laab kai chicken salad",
+      price: 10,
+      category: "salads",
+      image: "laab_kai_chicken_salad.png",
+      id: "laab-kai-chicken-salad"
+    });
 
     holder.append(card.elem);
+    // console.log(card.elem)
+    // document.body.append(card.elem);
+    // document.body.append(hh.elem);
   </script>
 </body>
 
