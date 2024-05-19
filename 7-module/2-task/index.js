@@ -7,67 +7,71 @@ export default class Modal {
   body = undefined
 
   constructor() {
+    this.render();
 
+    this.elem.addEventListener('click', (event) => this.onClick(event));
   }
 
-  setTitle(title) {
-    this.title = title
+  render() {
+    this.elem = createElement(`
+      <div class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__inner">
+          <div class="modal__header">
+            <button type="button" class="modal__close">
+              <img src="/assets/images/icons/cross-icon.svg" alt="close-icon" />
+            </button>
+            <h3 class="modal__title"></h3>
+          </div>
+          <div class="modal__body"></div>
+        </div>
+      </div>
+    `);
   }
 
-  setBody(body) {
-    this.body = body
-  }
-
-  close() {
-    document.body.classList.remove('is-modal-open')
-    document.body.removeChild(this.elem)
+  sub(ref) {
+    return this.elem.querySelector(`.modal__${ref}`);
   }
 
   open() {
-    const div = document.createElement('div')
-    div.classList.add('modal')
-    document.body.appendChild(div)
+    document.body.append(this.elem);
+    document.body.classList.add('is-modal-open');
 
-    const modalOverlay = document.createElement('div')
-    modalOverlay.classList.add('modal__overlay')
-    div.appendChild(modalOverlay)
+    this._keydownEventListener = (event) => this.onDocumentKeyDown(event);
+    document.addEventListener('keydown', this._keydownEventListener);
 
-    const modalInner = document.createElement('div')
-    modalInner.classList.add('modal__inner')
-    div.appendChild(modalInner)
+    if (this.elem.querySelector('[autofocus]')) {
+      this.elem.querySelector('[autofocus]').focus();
+    }
+  }
 
-    const modalHeader = document.createElement('div')
-    modalHeader.classList.add('modal__header')
-    modalInner.appendChild(modalHeader)
+  onClick(event) {
+    if (event.target.closest('.modal__close')) {
+      event.preventDefault();
+      this.close();
+    }
+  }
 
-    const modalTitle = document.createElement('h3')
-    modalTitle.classList.add('modal__title')
-    modalTitle.innerHTML = this.title
-    modalHeader.appendChild(modalTitle)
+  onDocumentKeyDown(event) {
+    if (event.code === 'Escape') {
+      event.preventDefault();
+      this.close();
+    }
+  }
 
-    const modalBody = document.createElement('div')
-    modalBody.classList.add('modal__body')
-    console.log(this.body);
-    modalBody.appendChild(this.body)
-    modalInner.appendChild(modalBody)
+  setTitle(title) {
+    this.sub('title').textContent = title;
+  }
 
-    const elementСardButton = document.createElement("button");
-    elementСardButton.classList.add('modal__close');
-    const img2 = document.createElement('img');
-    img2.src = '../../assets/images/icons/cross-icon.svg';
-    elementСardButton.append(img2);
-    modalHeader.append(elementСardButton)
+  setBody(node) {
+    this.sub('body').innerHTML = '';
+    this.sub('body').append(node);
+  }
 
-    elementСardButton.addEventListener('click', 
-      this.close.bind(this)
-    )
-    
-    document.body.classList.add('is-modal-open')
-    this.elem = div
-
-    document.addEventListener('keydown', (event) => {
-      event.code === 'Escape' ? this.close() : ''
-    })
+  close() {
+    document.removeEventListener('keydown', this._keydownEventListener);
+    document.body.classList.remove('is-modal-open');
+    this.elem.remove();
   }
 }
 
