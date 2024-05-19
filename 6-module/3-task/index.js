@@ -16,7 +16,7 @@ export default class Carousel {
     arrowRight.classList.add('carousel__arrow');
     arrowRight.classList.add('carousel__arrow_right');
     const imgArrowRight = document.createElement('img');
-    imgArrowRight.src = `../../assets/images/icons/angle-icon.svg`;
+    imgArrowRight.src = `assets/images/icons/angle-icon.svg`;
     arrowRight.appendChild(imgArrowRight)
     carousel.appendChild(arrowRight)
 
@@ -24,7 +24,7 @@ export default class Carousel {
     arrowLeft.classList.add('carousel__arrow');
     arrowLeft.classList.add('carousel__arrow_left');
     const imgArrowLeft = document.createElement('img');
-    imgArrowLeft.src = `../../assets/images/icons/angle-left-icon.svg`;
+    imgArrowLeft.src = `assets/images/icons/angle-left-icon.svg`;
     arrowLeft.appendChild(imgArrowLeft)
     carousel.appendChild(arrowLeft)
 
@@ -32,10 +32,10 @@ export default class Carousel {
     inner.classList.add('carousel__inner');
     carousel.appendChild(inner)
 
-    console.log(33, this.slides);
+    // console.log(33, this.slides);
     this.slides.map((slide) => { 
       const productCard = new ProductCard(slide);
-      console.log(productCard.elem);
+      // console.log(productCard.elem);
       inner.appendChild(productCard.elem)
     })
 
@@ -77,7 +77,7 @@ class ProductCard {
     elementDiv.appendChild(elementСardDiv)
 
     const img = document.createElement('img');
-    img.src = `../../assets/images/carousel/${product.image}`;
+    img.src = `assets/images/carousel/${product.image}`;
     img.classList.add('carousel__img');
     elementСardDiv.append(img);
 
@@ -99,12 +99,12 @@ class ProductCard {
     const elementСardButton = document.createElement("button");
     elementСardButton.classList.add('carousel__button');
     const img2 = document.createElement('img');
-    img2.src = '../../assets/images/icons/plus-icon.svg';
+    img2.src = 'assets/images/icons/plus-icon.svg';
     elementСardButton.append(img2);
     elementCarouselCaption.append(elementСardButton)
 
     elementСardButton.addEventListener('click', () => {
-      console.log(1111);
+      // console.log(1111);
       elementСardButton.dispatchEvent(new CustomEvent("product-add", {
         detail: product.id,
         bubbles: true,

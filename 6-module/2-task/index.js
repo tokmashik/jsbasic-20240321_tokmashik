@@ -12,7 +12,7 @@ export default class ProductCard {
     elementDiv.appendChild(elementСardDiv)
 
     const img = document.createElement('img');
-    img.src = `../../assets/images/products/${product.image}`;
+    img.src = `assets/images/products/${product.image}`;
     img.classList.add('card__image');
     elementСardDiv.append(img);
 
@@ -34,7 +34,7 @@ export default class ProductCard {
     const elementСardButton = document.createElement("button");
     elementСardButton.classList.add('card__button');
     const img2 = document.createElement('img');
-    img2.src = '../../assets/images/icons/plus-icon.svg';
+    img2.src = 'assets/images/icons/plus-icon.svg';
     elementСardButton.append(img2);
     elementСardBodyDiv.append(elementСardButton)
 

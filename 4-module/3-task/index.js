@@ -25,5 +25,3 @@ function highlight(table) {
       if(gender.innerText === 'f') row.classList.add('female');
   }));
 };
-
-highlight( document.querySelector('table.js-teachers') );

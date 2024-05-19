@@ -21,7 +21,7 @@ function initCarousel() {
     counter = counter - 1;
     slide.style.transform = `translateX(-${slide.offsetWidth * counter}px)`
 
-    console.log(counter);
+    // console.log(counter);
     if (!counter) {
       left.style.display = 'none'
     }

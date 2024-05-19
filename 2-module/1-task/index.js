@@ -12,11 +12,11 @@ function sumSalary(salaries) {
   let sum = 0;
   for (let key in salaries) {
     if (typeof salaries[key] === 'number' && isFinite(salaries[key]) ) {
-      console.log(salaries[key])
+      // console.log(salaries[key])
       sum += salaries[key];
     }
   }
-  console.log(sum)
+  // console.log(sum)
   return sum;
 }
 

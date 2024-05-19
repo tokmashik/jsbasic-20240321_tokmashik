@@ -8,7 +8,7 @@
  * Эту функцию трогать не нужно
  */
 function print(text) {
-  console.log(text);
+  // console.log(text);
 }
 
 /**

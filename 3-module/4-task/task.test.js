@@ -1,5 +1,3 @@
-import showSalary from "./index"
-
 /* eslint-disable */
 const data = [
   {

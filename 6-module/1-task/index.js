@@ -51,7 +51,7 @@ export default class UserTable {
     let row = event.target.parentElement.parentElement;
     this.#rows.splice(row.rowIndex - 1, 1);
     row.remove();
-    console.log(this.#rows);
+    // console.log(this.#rows);
   }
 }
 
